@@ -1,6 +1,5 @@
 package br.com.liandro.page;
 
-import br.com.liandro.utils.Utils;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import org.apache.commons.io.FileUtils;
@@ -44,21 +43,21 @@ public class AlarmePageObject {
     public void verificarAlarmeEHorario(String passoNome) throws IOException {
         Assert.assertTrue(driver.findElementByXPath("//android.widget.TextView[@content-desc=\"10:00 PM\"]").isDisplayed());
         Assert.assertEquals("10:00 PM", driver.findElementByXPath("//android.widget.TextView[@content-desc=\"10:00 PM\"]").getText());
-        tirarPrintEImprimirNoLog("Confirmei que a hora cadastrada esta de acordo com os valores enviados" + passoNome);
+        tirarPrintEImprimirNoLog("Confirmei que a hora cadastrada esta de acordo com os valores enviados " + passoNome);
     }
 
     public void clicarNoBotaoOkEEvideciar(String passoAtual) throws IOException {
         driver.findElementByXPath("//android.widget.Button[@text='OK']").click();
-        tirarPrintEImprimirNoLog("Cliquei no botao OK" + passoAtual);
+        tirarPrintEImprimirNoLog("Cliquei no botao OK " + passoAtual);
     }
 
     public void clicarNoBotaoAlarmeEValidarTelaAlarme(String passoAtual) throws IOException {
         driver.findElement(By.xpath("//android.widget.TextView[@text='Alarm']")).click();
-        tirarPrintEImprimirNoLog("Clicou no botão Alarme" + passoAtual);
+        tirarPrintEImprimirNoLog("Clicou no botão Alarme " + passoAtual);
 
         Assert.assertTrue(driver.findElement(By.xpath("//android.widget.TextView[@text='Alarm']")).isDisplayed());
         Assert.assertEquals("Alarm", driver.findElement(By.xpath("//android.widget.TextView[@text='Alarm']")).getText());
-        tirarPrintEImprimirNoLog("Validamos que a tela  de alarme foi exibida" + passoAtual);
+        tirarPrintEImprimirNoLog("Validamos que a tela de alarme foi exibida" + passoAtual);
     }
 
     public void clicarEmAdicionarAlarme() throws IOException {
@@ -88,6 +87,8 @@ public class AlarmePageObject {
         driver.findElementById("android:id/input_minute").clear();
         driver.findElementById("android:id/input_minute").sendKeys(minutos);
         tirarPrintEImprimirNoLog("Lancei o valor 00 no campo minuto");
+        driver.findElementById("android:id/am_pm_spinner").click();
+        driver.findElementByXPath("//android.widget.CheckedTextView[@text='PM']").click();
     }
 
     public void clicarNoBotaoRepetirLigagoOuDesligado() throws IOException {

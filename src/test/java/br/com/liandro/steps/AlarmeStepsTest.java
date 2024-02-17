@@ -2,22 +2,33 @@ package br.com.liandro.steps;
 
 import br.com.liandro.page.AlarmePageObject;
 import br.com.liandro.utils.Utils;
-import org.junit.Assert;
+import org.junit.After;
+import org.junit.Before;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
 import java.io.IOException;
+import java.net.MalformedURLException;
 
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class AlarmeStepsTest {
     private Utils utils = new Utils();
 
+    @Before
+    public void iniciar() throws MalformedURLException {
+        utils.iniciar();
+    }
+
+    @After
+    public void finalizar() {
+        utils.driver.quit();
+    }
 
     @Test
     public void adicionarUmAlarme() throws IOException {
-        utils.iniciar();
+
         AlarmePageObject alarmePageObject = new AlarmePageObject(utils.driver);
 
         alarmePageObject.clicarNoBotaoAlarmeEValidarTelaAlarme("adicionar Um Alarme");
