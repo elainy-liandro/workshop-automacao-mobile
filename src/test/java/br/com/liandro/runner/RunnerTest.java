@@ -6,7 +6,7 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        plugin = {"pretty", "json:target/test.json", "html:target/evidencias/evidence-html"},
+        plugin = {"pretty", "json:target/test.json", "html:target/evidencias/evidence.html"},
         snippets = CucumberOptions.SnippetType.CAMELCASE,
         monochrome = true,
         features = {"src/test/resources/features"},
